@@ -28,7 +28,7 @@ def _host():
     ip = request.args.get('ip')#使用request.args.get方式获取拼接的入参数据
     port = request.args.get('port')
     set_port = request.args.get('sport')
-    echeck_port = echeck_port_in_us(set_port,'52.83.60.154') #检测端口是否使用
+    echeck_port = echeck_port_in_us(set_port,'frp服务的IP') #检测端口是否使用,这里需要修改
     print(ranstr())
     ips = re.findall("^(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)$", ip)
     if not ips:
@@ -48,7 +48,8 @@ def _host():
       
   
 
-
+#开发
 app.run(host='127.0.0.1',port=8802,debug=True)
+#生产
 # server = make_server('', 8802, app)
 # server.serve_forever()
